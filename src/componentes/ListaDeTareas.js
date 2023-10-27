@@ -4,19 +4,28 @@ import Tarea from './Tarea';
 import '../hojas-de-estilo/ListaDeTareas.css';
 
 function ListaDeTareas() {
-
-  const [tareas, setTareas] = useState([]);
+  let lista_tareas = localStorage.getItem("todo-react-list");
+  if(!lista_tareas) {
+    lista_tareas = [];
+    localStorage.setItem("todo-react-list", JSON.stringify(lista_tareas));
+  } else {
+    lista_tareas = JSON.parse(lista_tareas);
+  }
+  
+  const [tareas, setTareas] = useState(lista_tareas);
 
   const agregarTarea = tarea => {
     if (tarea.texto.trim()) {
       tarea.texto = tarea.texto.trim();
       const tareasActualizadas = [tarea, ...tareas];
       setTareas(tareasActualizadas);
+      localStorage.setItem("todo-react-list", JSON.stringify(tareasActualizadas));
     }
   }
 
   const eliminarTarea = id => {
     const tareasActualizadas = tareas.filter(tarea => tarea.id !== id);
+    localStorage.setItem("todo-react-list", JSON.stringify(tareasActualizadas));
     setTareas(tareasActualizadas);
   }
 
@@ -27,6 +36,7 @@ function ListaDeTareas() {
       }
       return tarea;
     });
+    localStorage.setItem("todo-react-list", JSON.stringify(tareasActualizadas));
     setTareas(tareasActualizadas);
   }
   
