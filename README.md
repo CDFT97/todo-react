@@ -9,5 +9,5 @@ La aplicación se abrirá automáticamente en el navegador configurado por defec
 ## Instalar Módulos
 Para instalar los módulos necesarios para la aplicación, debes ejecutar el comando `npm install` en el terminal.
 
-Puedes probar su version online <a href="#" target="_blank">aca</a> .
+Puedes probar su version online <a href="https://to-do-app-react-v1.netlify.app" target="_blank">aca</a> .
 
